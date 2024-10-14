@@ -1,6 +1,8 @@
 # gorm-snowflake
 Snowflake driver for [gorm](https://gorm.io/)
 
+# FORK OF: https://github.com/omixen/gorm-snowflake
+
 ## Snowflake Features
 
 Notable Snowflake (SF) features that affect decisions in this driver
