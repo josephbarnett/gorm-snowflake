@@ -6,6 +6,8 @@ import (
 	"gorm.io/gorm/schema"
 )
 
+var _ schema.Namer = (*NamingStrategy)(nil)
+
 // NamingStrategy for snowflake (always uppercase)
 type NamingStrategy struct {
 	defaultNS schema.Namer
@@ -51,4 +53,9 @@ func (sns NamingStrategy) CheckerName(table, column string) string {
 // IndexName snowflake edition
 func (sns NamingStrategy) IndexName(table, column string) string {
 	return sns.defaultNS.IndexName(table, column)
+}
+
+// UniqueName implements schema.Namer.
+func (sns *NamingStrategy) UniqueName(table string, column string) string {
+	return sns.defaultNS.UniqueName(table, column)
 }
